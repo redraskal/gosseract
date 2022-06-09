@@ -2,12 +2,18 @@
 #include "/usr/local/include/leptonica/allheaders.h"
 #include "/usr/local/include/tesseract/baseapi.h"
 #else
-#include <leptonica/allheaders.h>
 #include <tesseract/baseapi.h>
+#include <leptonica/allheaders.h>
 #endif
 
 #include <stdio.h>
+#ifdef _WIN32
+#include <io.h>
+#define STDERR_FILENO 2
+#else
 #include <unistd.h>
+#endif
+
 #include "tessbridge.h"
 
 TessBaseAPI Create() {
